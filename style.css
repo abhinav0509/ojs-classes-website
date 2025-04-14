@@ -1,0 +1,824 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero-pattern {
+  background-color: #ffffff;
+  background-image: radial-gradient(#1E40AF 0.5px, #ffffff 0.5px);
+  background-size: 10px 10px;
+}
+
+.nav-link {
+  @apply hover:text-primary transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition-all duration-200 font-semibold;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-transform duration-200 hover:scale-105;
+}
+
+.quick-connect-icon {
+  @apply text-gray-600 hover:text-primary transition-all duration-300 hover:scale-110;
+}
+
+.quick-connect-icon:hover {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.floating-cta {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-slider {
+  @apply relative overflow-hidden h-[500px] md:h-[600px];
+}
+
+.countdown-timer {
+  @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-4 absolute bottom-8 left-1/2 -translate-x-1/2;
+}
+
+.program-card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer;
+}
+
+.program-card:hover .program-icon {
+  @apply text-primary transform rotate-12;
+}
+
+.subject-card {
+  @apply min-w-[280px] bg-white rounded-xl shadow-lg p-6 transition-all duration-300;
+}
+
+.metric-card {
+  @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center;
+}
+
+.faculty-card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl;
+}
+
+.testimonial-card {
+  @apply bg-white rounded-xl shadow-lg p-6;
+}
+
+.methodology-card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+}
+
+.methodology-card:hover {
+  transform: translateY(-5px);
+}
+
+.cognitive-compass {
+  @apply flex flex-col md:flex-row items-center justify-between;
+}
+
+.compass-step {
+  @apply flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md;
+  min-width: 200px;
+}
+
+.step-number {
+  @apply w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold;
+}
+
+.compass-arrow {
+  @apply hidden md:block;
+}
+
+.compass-arrow svg {
+  @apply transform rotate-90 md:rotate-0;
+}
+
+.session-simulator {
+  @apply transition-all duration-300;
+}
+
+.option-btn {
+  @apply p-4 rounded-lg border-2 border-gray-200 text-gray-700 font-medium transition-all duration-200;
+}
+
+.option-btn:hover {
+  @apply border-primary bg-primary/5;
+}
+
+.option-btn.correct {
+  @apply border-green-500 bg-green-50 text-green-700;
+}
+
+.option-btn.incorrect {
+  @apply border-red-500 bg-red-50 text-red-700;
+}
+
+.feedback-section {
+  @apply transition-all duration-300;
+}
+
+.feedback-content {
+  @apply bg-gray-50 border-l-4 border-primary;
+}
+
+.next-question-btn {
+  @apply w-full;
+}
+
+.blog-card {
+  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl;
+}
+
+.faq-item {
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300;
+}
+
+.guidance-genie {
+  @apply fixed bottom-4 right-4 bg-primary text-white rounded-full p-4 shadow-lg cursor-pointer transition-all duration-300 hover:scale-110;
+}
+
+.bookmark-beacon {
+  @apply fixed right-0 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-l-xl shadow-lg p-4;
+}
+
+.momentum-bar {
+  @apply fixed bottom-0 left-0 w-full h-1 bg-gray-200;
+}
+
+.momentum-progress {
+  @apply h-full bg-primary transition-all duration-300;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Scrollbar Styling */
+.custom-scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-200;
+}
+
+/* Map Styles */
+.map-container {
+  @apply h-[400px] rounded-xl overflow-hidden shadow-lg;
+}
+
+/* Constellation Card Styles */
+.constellation-card {
+  @apply relative overflow-hidden;
+  transition: all 0.3s ease;
+}
+
+.constellation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(30, 64, 175, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.constellation-card:hover::before {
+  opacity: 1;
+}
+
+.constellation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.constellation-card .program-icon {
+  transition: transform 0.3s ease;
+}
+
+.constellation-card:hover .program-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Subject Spectrum Styles */
+.subject-spectrum-container {
+  @apply relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.subject-spectrum-container::-webkit-scrollbar {
+  display: none;
+}
+
+.subject-card {
+  @apply flex flex-col items-center text-center p-6;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-5px);
+}
+
+.subject-card .icon-container {
+  @apply rounded-full p-4 mb-4;
+  transition: all 0.3s ease;
+}
+
+.subject-card:hover .icon-container {
+  transform: scale(1.1);
+}
+
+/* Scroll Indicators */
+.scroll-indicator {
+  @apply absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center cursor-pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  @apply bg-primary text-white;
+}
+
+.scroll-indicator-left {
+  @apply left-0;
+}
+
+.scroll-indicator-right {
+  @apply right-0;
+}
+
+/* Testimonial Terrain Styles */
+.video-card {
+  @apply relative overflow-hidden;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.video-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.video-card:hover::before {
+  opacity: 1;
+}
+
+.play-button {
+  @apply absolute z-10 transform scale-100 transition-transform duration-300;
+}
+
+.video-card:hover .play-button {
+  transform: scale(1.1);
+}
+
+/* Parent Perspective Portal Styles */
+.parent-tab {
+  @apply px-6 py-3 rounded-lg text-gray-600 font-medium transition-all duration-300;
+}
+
+.parent-tab.active {
+  @apply bg-primary text-white;
+}
+
+.parent-testimonial {
+  @apply hidden p-6 bg-white rounded-xl shadow-lg;
+}
+
+.parent-testimonial.active {
+  @apply block;
+}
+
+.before-section, .after-section {
+  @apply p-6 rounded-lg;
+}
+
+.before-section {
+  @apply bg-red-50;
+}
+
+.after-section {
+  @apply bg-green-50;
+}
+
+/* Alumni Achievement Atlas Styles */
+.alumni-map-container {
+  @apply relative;
+}
+
+.stat-card {
+  @apply bg-white rounded-xl shadow-lg p-6 text-center transition-all duration-300 hover:shadow-xl;
+}
+
+/* Map Marker Styles */
+.map-marker {
+  @apply w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg;
+}
+
+.map-marker::after {
+  content: '';
+  @apply absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary rotate-45;
+}
+
+/* Animation Classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Learning Journey Navigator */
+.journey-navigator {
+  @apply relative;
+}
+
+.journey-path {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-8;
+}
+
+.journey-step {
+  @apply relative flex flex-col items-center;
+}
+
+.step-circle {
+  @apply w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center relative z-10 transition-all duration-300;
+}
+
+.step-circle:hover {
+  @apply transform scale-110 shadow-xl;
+}
+
+.step-number {
+  @apply absolute top-0 right-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold;
+}
+
+.step-icon {
+  @apply text-primary;
+}
+
+.step-content {
+  @apply mt-6 text-center;
+}
+
+.step-progress {
+  @apply h-1 w-full bg-gray-200 rounded-full mt-4;
+}
+
+.progress-bar {
+  @apply h-full bg-primary rounded-full transition-all duration-500;
+  width: 0%;
+}
+
+/* Journey Step States */
+.journey-step.active .step-circle {
+  @apply bg-primary;
+}
+
+.journey-step.active .step-icon {
+  @apply text-white;
+}
+
+.journey-step.active .progress-bar {
+  @apply w-full;
+}
+
+.journey-step.completed .step-circle {
+  @apply bg-green-500;
+}
+
+.journey-step.completed .step-icon {
+  @apply text-white;
+}
+
+.journey-step.completed .progress-bar {
+  @apply w-full bg-green-500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .journey-path {
+    @apply grid-cols-1;
+  }
+  
+  .journey-step {
+    @apply flex-row items-start;
+  }
+  
+  .step-content {
+    @apply mt-0 ml-4 text-left;
+  }
+}
+
+/* Animation */
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.progress-bar.animate {
+  animation: progressFill 1s ease-out forwards;
+}
+
+/* Learning Pathway Explorer */
+.pathway-explorer {
+  @apply relative;
+}
+
+.pathway-visualization {
+  @apply relative flex flex-col md:flex-row items-center justify-between py-12 gap-8;
+}
+
+.pathway-step {
+  @apply relative flex-1 flex flex-col items-center;
+  min-width: 200px;
+}
+
+.step-card {
+  @apply bg-white rounded-xl shadow-lg p-6 w-full max-w-xs text-center;
+  transition: all 0.3s ease;
+}
+
+.step-orb {
+  @apply relative w-24 h-24 mx-auto mb-4;
+}
+
+.orb-glow {
+  @apply absolute inset-0 rounded-full bg-primary/20 blur-xl;
+  animation: pulseGlow 2s infinite;
+}
+
+.orb-content {
+  @apply absolute inset-0 rounded-full bg-white shadow-lg flex items-center justify-center;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  @apply absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm;
+  transition: all 0.3s ease;
+}
+
+.step-icon {
+  @apply text-primary;
+  transition: all 0.3s ease;
+}
+
+.step-info {
+  @apply mt-4;
+}
+
+.step-connector {
+  @apply hidden md:block absolute top-1/2 right-0 w-full h-1 bg-gray-200;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.step-connector::after {
+  content: '';
+  @apply absolute top-0 left-0 h-full bg-primary;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  @apply relative mt-12;
+}
+
+.progress-track {
+  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-primary rounded-full;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.progress-marker {
+  @apply absolute top-1/2 w-4 h-4 bg-white border-2 border-gray-300 rounded-full;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+/* Step States */
+.pathway-step.active .step-card {
+  @apply bg-primary/5;
+}
+
+.pathway-step.active .orb-content {
+  @apply bg-primary;
+}
+
+.pathway-step.active .step-icon {
+  @apply text-white;
+}
+
+.pathway-step.active .step-number {
+  @apply bg-white text-primary;
+}
+
+.pathway-step.completed .step-card {
+  @apply bg-green-50;
+}
+
+.pathway-step.completed .orb-content {
+  @apply bg-green-500;
+}
+
+.pathway-step.completed .step-icon {
+  @apply text-white;
+}
+
+.pathway-step.completed .step-number {
+  @apply bg-white text-green-500;
+}
+
+.pathway-step.completed .step-connector::after {
+  width: 100%;
+}
+
+/* Hover Effects */
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.step-card:hover .orb-content {
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: scale(0.95); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+  100% { opacity: 0.5; transform: scale(0.95); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pathway-step {
+    @apply mb-12;
+  }
+  
+  .step-connector {
+    @apply block absolute top-full left-1/2 w-1 h-12;
+    transform: translateX(-50%);
+  }
+  
+  .step-connector::after {
+    @apply w-full;
+    height: 0%;
+    transition: height 0.5s ease;
+  }
+  
+  .pathway-step.completed .step-connector::after {
+    height: 100%;
+  }
+}
+
+/* Micro-interactions */
+.pathway-step {
+  cursor: pointer;
+}
+
+.step-card:active {
+  transform: scale(0.98);
+}
+
+.progress-marker.active {
+  @apply border-primary bg-primary;
+  animation: markerPulse 1.5s infinite;
+}
+
+@keyframes markerPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* About Us Page Styles */
+.approach-card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+}
+
+.approach-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-card {
+  @apply bg-white rounded-xl shadow-lg p-6 text-center transition-all duration-300 hover:shadow-xl;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-card h4 {
+  @apply text-primary;
+}
+
+/* Program Card Styles */
+.program-card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+}
+
+.program-card h3 {
+  @apply text-primary;
+}
+
+/* About Hero Section */
+.about-hero {
+  @apply relative overflow-hidden;
+}
+
+.about-hero::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .program-card {
+    @apply mb-6;
+  }
+  
+  .value-card {
+    @apply mb-6;
+  }
+  
+  .approach-card {
+    @apply mb-6;
+  }
+}
+
+/* Connection Crucible Styles */
+.form-group {
+  @apply relative;
+}
+
+.form-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200;
+}
+
+.field-suggestions {
+  @apply absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10;
+}
+
+.field-suggestions.active {
+  @apply block;
+}
+
+.field-suggestion-item {
+  @apply px-4 py-2 hover:bg-gray-50 cursor-pointer transition-colors duration-200;
+}
+
+/* Location Lattice Styles */
+.location-info {
+  @apply bg-white rounded-xl shadow-lg p-6;
+}
+
+.route-item {
+  @apply flex items-center space-x-3 p-3 bg-gray-50 rounded-lg transition-all duration-200 hover:bg-gray-100;
+}
+
+.route-icon {
+  @apply text-xl;
+}
+
+.route-text {
+  @apply text-gray-700;
+}
+
+/* FAQ Fountain Styles */
+.faq-question {
+  @apply w-full flex justify-between items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200;
+}
+
+.faq-question[aria-expanded="true"] .question-icon {
+  @apply transform rotate-45;
+}
+
+.question-text {
+  @apply text-lg font-medium text-gray-900;
+}
+
+.question-icon {
+  @apply text-xl text-primary transition-transform duration-200;
+}
+
+.faq-answer {
+  @apply p-4 bg-gray-50 rounded-lg mt-1;
+}
+
+.faq-item.highlight {
+  @apply border-2 border-primary;
+}
+
+/* Search Container Styles */
+.search-container {
+  @apply relative;
+}
+
+#faqSearch {
+  @apply w-full pl-10;
+}
+
+.search-container::before {
+  content: '🔍';
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2;
+}
+
+/* Map Container Styles */
+.map-container {
+  @apply rounded-xl overflow-hidden shadow-lg;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .location-info {
+    @apply mt-4;
+  }
+  
+  .route-item {
+    @apply p-2;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
