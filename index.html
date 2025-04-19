@@ -93,33 +93,139 @@
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-16 bg-gradient-to-b from-blue-50 to-white">
       <div class="container mx-auto px-4">
-        <!-- Hero Slider -->
-        <div class="hero-slider">
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="w-full md:w-1/2 z-10 mb-12 md:mb-0">
-              <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                Shape Your Future with
-                <span class="text-primary">Expert Guidance</span>
-              </h1>
-              <p class="text-lg text-gray-600 mb-8">
-                Join Delhi's premier coaching institute for JEE, NEET, KVPY, NTSE, and Olympiads. Experience excellence in education.
-              </p>
-              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <button class="btn-primary floating-cta">Register Now</button>
-                <button class="border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-200 font-semibold">
-                  Explore Courses
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Image Slider - 8 columns -->
+          <div class="lg:col-span-8">
+            <div class="hero-slider relative rounded-xl overflow-hidden shadow-xl">
+              <!-- Slider Images -->
+              <div class="slider-container h-[500px] relative overflow-hidden">
+                <div class="slider-track flex transition-transform duration-500">
+                  <!-- Slide 1 - Results -->
+                  <div class="slide min-w-full h-full relative bg-[#46397C] flex items-center justify-center">
+                    <img src="images/results-banner.jpg" 
+                         alt="OJS Classes Student Results" 
+                         class="w-auto h-full max-w-full object-contain px-4">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+                      <h2 class="text-white text-3xl font-bold">Outstanding Results</h2>
+                      <p class="text-white/90">Our students consistently achieve excellence in academics</p>
+                    </div>
+                  </div>
+                  <!-- Slide 2 -->
+                  <div class="slide min-w-full h-full relative bg-gray-100">
+                    <img src="classroom.jpg" 
+                         alt="Classroom learning" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+                      <h2 class="text-white text-3xl font-bold">Expert Faculty</h2>
+                      <p class="text-white/90">Learn from experienced educators</p>
+                    </div>
+                  </div>
+                  <!-- Slide 3 -->
+                  <div class="slide min-w-full h-full relative bg-gray-100">
+                    <img src="study-group.jpg" 
+                         alt="Group study" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+                      <h2 class="text-white text-3xl font-bold">Interactive Learning</h2>
+                      <p class="text-white/90">Engaging and effective study environment</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slider Navigation -->
+                <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 p-2 rounded-full text-white z-10" id="prevSlide">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 p-2 rounded-full text-white z-10" id="nextSlide">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
                 </button>
               </div>
+              <!-- Slider Dots -->
+              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="0"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
+              </div>
             </div>
-            <div class="hidden md:block w-1/2">
-              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800" 
-                   alt="Students studying" 
-                   class="rounded-lg shadow-xl">
+          </div>
+
+          <!-- Registration Form - 4 columns -->
+          <div class="lg:col-span-4">
+            <div class="bg-white rounded-xl shadow-xl p-6">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Admission Inquiry</h2>
+              <p class="text-gray-600 mb-6">Fill out the form below to get started with your journey at OJS Classes</p>
+              
+              <form class="space-y-4">
+                <div>
+                  <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+                  <input type="text" id="studentName" name="studentName" 
+                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                         placeholder="Enter student name">
+                </div>
+                
+                <div>
+                  <label for="parentName" class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
+                  <input type="text" id="parentName" name="parentName" 
+                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                         placeholder="Enter parent/guardian name">
+                </div>
+                
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" 
+                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                         placeholder="Enter phone number">
+                </div>
+                
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <input type="email" id="email" name="email" 
+                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                         placeholder="Enter email address">
+                </div>
+                
+                <div>
+                  <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Current Class</label>
+                  <select id="class" name="class" 
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Select class</option>
+                    <option value="6">Class 6</option>
+                    <option value="7">Class 7</option>
+                    <option value="8">Class 8</option>
+                    <option value="9">Class 9</option>
+                    <option value="10">Class 10</option>
+                    <option value="11">Class 11</option>
+                    <option value="12">Class 12</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label for="course" class="block text-sm font-medium text-gray-700 mb-1">Course Interested In</label>
+                  <select id="course" name="course" 
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Select course</option>
+                    <option value="jee">JEE</option>
+                    <option value="neet">NEET</option>
+                    <option value="kvpy">KVPY</option>
+                    <option value="ntse">NTSE</option>
+                    <option value="olympiad">Olympiads</option>
+                    <option value="school">School Curriculum</option>
+                  </select>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark transition-colors">
+                  Submit Inquiry
+                </button>
+              </form>
             </div>
           </div>
         </div>
-        
-        <!-- Countdown Timer - Moved outside hero-slider -->
+
+        <!-- Countdown Timer -->
         <div class="mt-6 md:mt-0">
           <p class="text-center text-sm font-semibold text-gray-600 mb-2">Next Scholarship Test</p>
           <div class="flex justify-center space-x-4 text-center">

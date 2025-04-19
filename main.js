@@ -480,3 +480,72 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
   });
 });
+
+// Hero Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderTrack = document.querySelector('.slider-track');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevButton = document.querySelector('#prevSlide');
+    const nextButton = document.querySelector('#nextSlide');
+    
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    
+    // Initialize
+    updateSlider();
+    
+    // Auto slide every 5 seconds
+    let autoSlideInterval = setInterval(nextSlide, 5000);
+    
+    // Functions
+    function updateSlider() {
+        // Update slider position
+        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('bg-white', index === currentSlide);
+            dot.classList.toggle('bg-white/50', index !== currentSlide);
+        });
+        
+        // Reset auto slide interval
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateSlider();
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        updateSlider();
+    }
+    
+    // Event Listeners
+    prevButton.addEventListener('click', () => {
+        prevSlide();
+    });
+    
+    nextButton.addEventListener('click', () => {
+        nextSlide();
+    });
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+    
+    // Pause auto-slide on hover
+    sliderTrack.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    
+    sliderTrack.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    });
+});
