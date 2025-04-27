@@ -481,71 +481,89 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Hero Slider Functionality
-document.addEventListener('DOMContentLoaded', function() {
+// --- HERO SLIDER: SIMPLE ABSOLUTE-POSITION IMPLEMENTATION ---
+(function() {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function() {
     const sliderTrack = document.querySelector('.slider-track');
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.slider-dot');
-    const prevButton = document.querySelector('#prevSlide');
-    const nextButton = document.querySelector('#nextSlide');
-    
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    if (!sliderTrack || slides.length === 0) return;
+
+    // Make all slides absolutely positioned and stacked
+    sliderTrack.style.position = 'relative';
+    slides.forEach((slide, i) => {
+      slide.style.position = 'absolute';
+      slide.style.top = 0;
+      slide.style.left = 0;
+      slide.style.width = '100%';
+      slide.style.height = '100%';
+      slide.style.opacity = '0';
+      slide.style.transition = 'opacity 0.5s';
+      slide.style.zIndex = 1;
+    });
+
     let currentSlide = 0;
     const slideCount = slides.length;
-    
-    // Initialize
-    updateSlider();
-    
-    // Auto slide every 5 seconds
-    let autoSlideInterval = setInterval(nextSlide, 5000);
-    
-    // Functions
-    function updateSlider() {
-        // Update slider position
-        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('bg-white', index === currentSlide);
-            dot.classList.toggle('bg-white/50', index !== currentSlide);
-        });
-        
-        // Reset auto slide interval
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 5000);
+    let autoSlideInterval = null;
+
+    function showSlide(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentSlide = index;
+      slides.forEach((slide, i) => {
+        if (i === currentSlide) {
+          slide.style.opacity = '1';
+          slide.style.zIndex = 2;
+        } else {
+          slide.style.opacity = '0';
+          slide.style.zIndex = 1;
+        }
+      });
+      dots.forEach((dot, i) => {
+        if (i === currentSlide) {
+          dot.classList.add('active');
+          dot.classList.remove('bg-white/50');
+          dot.classList.add('bg-white');
+        } else {
+          dot.classList.remove('active');
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-white/50');
+        }
+      });
     }
-    
+
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % slideCount;
-        updateSlider();
+      showSlide(currentSlide + 1);
     }
-    
     function prevSlide() {
-        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-        updateSlider();
+      showSlide(currentSlide - 1);
     }
-    
-    // Event Listeners
-    prevButton.addEventListener('click', () => {
-        prevSlide();
+    function startAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+    function stopAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+    }
+
+    // Init
+    showSlide(0);
+    startAutoSlide();
+
+    // Events
+    if (prevButton) prevButton.onclick = function() { prevSlide(); startAutoSlide(); };
+    if (nextButton) nextButton.onclick = function() { nextSlide(); startAutoSlide(); };
+    dots.forEach((dot, i) => {
+      dot.onclick = function() { showSlide(i); startAutoSlide(); };
     });
-    
-    nextButton.addEventListener('click', () => {
-        nextSlide();
-    });
-    
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentSlide = index;
-            updateSlider();
-        });
-    });
-    
-    // Pause auto-slide on hover
-    sliderTrack.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-    
-    sliderTrack.addEventListener('mouseleave', () => {
-        autoSlideInterval = setInterval(nextSlide, 5000);
-    });
-});
+    sliderTrack.addEventListener('mouseenter', stopAutoSlide);
+    sliderTrack.addEventListener('mouseleave', startAutoSlide);
+  });
+})();
