@@ -200,7 +200,39 @@
 
 /* Map Styles */
 .map-container {
-  @apply h-[400px] rounded-xl overflow-hidden shadow-lg;
+  @apply rounded-xl overflow-hidden shadow-lg relative;
+  height: 400px;
+  width: 100%;
+}
+
+.map-container iframe {
+  @apply absolute inset-0 w-full h-full;
+  border: none;
+}
+
+.map-overlay {
+  @apply absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10;
+  pointer-events: none;
+}
+
+.map-marker {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.map-marker-icon {
+  @apply w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center;
+  animation: pulse 2s infinite;
+}
+
+.map-marker-icon::after {
+  content: '';
+  @apply absolute w-4 h-4 bg-primary rounded-full;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* Constellation Card Styles */
@@ -480,25 +512,31 @@
 
 /* Learning Pathway Explorer */
 .pathway-explorer {
-  @apply relative;
+  @apply relative w-full;
 }
 
 .pathway-visualization {
-  @apply relative flex flex-col md:flex-row items-center justify-between py-12 gap-8;
+  @apply relative flex flex-row items-center justify-between py-8 gap-4 md:gap-8 overflow-x-auto pb-8;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pathway-visualization::-webkit-scrollbar {
+  display: none;
 }
 
 .pathway-step {
-  @apply relative flex-1 flex flex-col items-center;
-  min-width: 200px;
+  @apply relative flex-none min-w-[280px] md:min-w-[320px] flex flex-col items-center;
+  flex: 0 0 auto;
 }
 
 .step-card {
-  @apply bg-white rounded-xl shadow-lg p-6 w-full max-w-xs text-center;
+  @apply bg-white rounded-xl shadow-lg p-6 w-full text-center;
   transition: all 0.3s ease;
 }
 
 .step-orb {
-  @apply relative w-24 h-24 mx-auto mb-4;
+  @apply relative w-20 h-20 mx-auto mb-4;
 }
 
 .orb-glow {
@@ -540,7 +578,7 @@
 
 /* Progress Indicator */
 .progress-indicator {
-  @apply relative mt-12;
+  @apply relative mt-8;
 }
 
 .progress-track {
@@ -616,7 +654,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .pathway-step {
-    @apply mb-12;
+    @apply min-w-[240px];
   }
   
   .step-connector {
@@ -653,6 +691,24 @@
   0% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -50%) scale(1.2); }
   100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Scroll Indicators */
+.pathway-scroll-indicator {
+  @apply absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center cursor-pointer z-10;
+  transition: all 0.3s ease;
+}
+
+.pathway-scroll-indicator:hover {
+  @apply bg-primary text-white;
+}
+
+.pathway-scroll-indicator-left {
+  @apply left-0;
+}
+
+.pathway-scroll-indicator-right {
+  @apply right-0;
 }
 
 /* About Us Page Styles */
@@ -737,7 +793,7 @@
 
 /* Location Lattice Styles */
 .location-info {
-  @apply bg-white rounded-xl shadow-lg p-6;
+  @apply bg-white rounded-xl shadow-lg p-6 h-full flex flex-col justify-between;
 }
 
 .route-item {
@@ -793,11 +849,47 @@
 
 /* Map Container Styles */
 .map-container {
-  @apply rounded-xl overflow-hidden shadow-lg;
+  @apply rounded-xl overflow-hidden shadow-lg relative;
+  height: 400px;
+  width: 100%;
 }
 
-/* Responsive Adjustments */
+.map-container iframe {
+  @apply absolute inset-0 w-full h-full;
+  border: none;
+}
+
+.map-overlay {
+  @apply absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10;
+  pointer-events: none;
+}
+
+.map-marker {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.map-marker-icon {
+  @apply w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center;
+  animation: pulse 2s infinite;
+}
+
+.map-marker-icon::after {
+  content: '';
+  @apply absolute w-4 h-4 bg-primary rounded-full;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+  
   .location-info {
     @apply mt-4;
   }
