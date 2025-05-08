@@ -155,39 +155,53 @@
               <h2 class="text-2xl font-bold text-gray-900 mb-4">Admission Inquiry</h2>
               <p class="text-gray-600 mb-6">Fill out the form below to get started with your journey at OJS Classes</p>
               
-              <form class="space-y-4">
+              <form id="admissionForm" class="space-y-4" novalidate>
                 <div>
                   <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
                   <input type="text" id="studentName" name="studentName" 
                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                         placeholder="Enter student name">
+                         placeholder="Enter student name"
+                         required
+                         minlength="2"
+                         pattern="[A-Za-z\s]+">
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <div>
                   <label for="parentName" class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
                   <input type="text" id="parentName" name="parentName" 
                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                         placeholder="Enter parent/guardian name">
+                         placeholder="Enter parent/guardian name"
+                         required
+                         minlength="2"
+                         pattern="[A-Za-z\s]+">
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <div>
                   <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                   <input type="tel" id="phone" name="phone" 
                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                         placeholder="Enter phone number">
+                         placeholder="Enter phone number"
+                         required
+                         pattern="[0-9]{10}">
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <div>
                   <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                   <input type="email" id="email" name="email" 
                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                         placeholder="Enter email address">
+                         placeholder="Enter email address"
+                         required>
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <div>
                   <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Current Class</label>
                   <select id="class" name="class" 
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                          required>
                     <option value="">Select class</option>
                     <option value="6">Class 6</option>
                     <option value="7">Class 7</option>
@@ -197,12 +211,14 @@
                     <option value="11">Class 11</option>
                     <option value="12">Class 12</option>
                   </select>
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <div>
                   <label for="course" class="block text-sm font-medium text-gray-700 mb-1">Course Interested In</label>
                   <select id="course" name="course" 
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                          required>
                     <option value="">Select course</option>
                     <option value="jee">JEE</option>
                     <option value="neet">NEET</option>
@@ -211,6 +227,7 @@
                     <option value="olympiad">Olympiads</option>
                     <option value="school">School Curriculum</option>
                   </select>
+                  <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
                 </div>
                 
                 <button type="submit" 
@@ -218,9 +235,268 @@
                   Submit Inquiry
                 </button>
               </form>
+
+              <!-- Success Animation Modal -->
+              <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                <div class="bg-white rounded-xl p-12 max-w-lg w-full mx-4 transform transition-all">
+                  <div class="text-center">
+                    <div class="success-checkmark mb-10">
+                      <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                      </div>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6 mt-10">Thank You!</h3>
+                    <p id="successMessage" class="text-gray-600 mb-8 text-lg"></p>
+                    <button onclick="closeSuccessModal()" class="bg-primary text-white py-3 px-8 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-lg">
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <style>
+          /* Success Animation Styles */
+          .success-checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+          }
+          
+          .check-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: content-box;
+            border: 4px solid #4CAF50;
+            background: #fff;
+          }
+          
+          .icon-line {
+            height: 5px;
+            background-color: #4CAF50;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+          }
+          
+          .icon-line.line-tip {
+            top: 46px;
+            left: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+            animation: icon-line-tip 0.75s;
+          }
+          
+          .icon-line.line-long {
+            top: 38px;
+            right: 8px;
+            width: 47px;
+            transform: rotate(-45deg);
+            animation: icon-line-long 0.75s;
+          }
+          
+          .icon-circle {
+            top: -4px;
+            left: -4px;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: content-box;
+            border: 4px solid rgba(76, 175, 80, .5);
+          }
+          
+          .icon-fix {
+            top: 8px;
+            width: 5px;
+            left: 26px;
+            z-index: 1;
+            height: 85px;
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: #FFFFFF;
+          }
+          
+          @keyframes icon-line-tip {
+            0% {
+              width: 0;
+              left: 1px;
+              top: 19px;
+            }
+            54% {
+              width: 0;
+              left: 1px;
+              top: 19px;
+            }
+            70% {
+              width: 50px;
+              left: -8px;
+              top: 37px;
+            }
+            84% {
+              width: 17px;
+              left: 21px;
+              top: 48px;
+            }
+            100% {
+              width: 25px;
+              left: 14px;
+              top: 46px;
+            }
+          }
+          
+          @keyframes icon-line-long {
+            0% {
+              width: 0;
+              right: 46px;
+              top: 54px;
+            }
+            65% {
+              width: 0;
+              right: 46px;
+              top: 54px;
+            }
+            84% {
+              width: 55px;
+              right: 0px;
+              top: 35px;
+            }
+            100% {
+              width: 47px;
+              right: 8px;
+              top: 38px;
+            }
+          }
+        </style>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('admissionForm');
+            const successModal = document.getElementById('successModal');
+            
+            // Validation messages
+            const validationMessages = {
+              studentName: {
+                required: 'Student name is required',
+                pattern: 'Please enter a valid name (only letters and spaces)',
+                minlength: 'Name must be at least 2 characters long'
+              },
+              parentName: {
+                required: 'Parent/Guardian name is required',
+                pattern: 'Please enter a valid name (only letters and spaces)',
+                minlength: 'Name must be at least 2 characters long'
+              },
+              phone: {
+                required: 'Phone number is required',
+                pattern: 'Please enter a valid 10-digit phone number'
+              },
+              email: {
+                required: 'Email address is required',
+                type: 'Please enter a valid email address'
+              },
+              class: {
+                required: 'Please select a class'
+              },
+              course: {
+                required: 'Please select a course'
+              }
+            };
+
+            // Show error message
+            function showError(input, message) {
+              const errorDiv = input.parentElement.querySelector('.error-message');
+              errorDiv.textContent = message;
+              errorDiv.classList.remove('hidden');
+              input.classList.add('border-red-500');
+            }
+
+            // Hide error message
+            function hideError(input) {
+              const errorDiv = input.parentElement.querySelector('.error-message');
+              errorDiv.classList.add('hidden');
+              input.classList.remove('border-red-500');
+            }
+
+            // Validate input
+            function validateInput(input) {
+              const value = input.value.trim();
+              const type = input.type;
+              const pattern = input.pattern;
+              const minLength = input.minLength;
+              
+              if (input.required && !value) {
+                showError(input, validationMessages[input.name].required);
+                return false;
+              }
+              
+              if (pattern && value && !new RegExp(pattern).test(value)) {
+                showError(input, validationMessages[input.name].pattern);
+                return false;
+              }
+              
+              if (minLength && value.length < minLength) {
+                showError(input, validationMessages[input.name].minlength);
+                return false;
+              }
+              
+              if (type === 'email' && value && !value.includes('@')) {
+                showError(input, validationMessages[input.name].type);
+                return false;
+              }
+              
+              hideError(input);
+              return true;
+            }
+
+            // Show success modal
+            function showSuccessModal(studentName) {
+              const successMessage = document.getElementById('successMessage');
+              successMessage.textContent = `Dear ${studentName}, your enquiry has been successfully submitted. Our team will reach out to you soon.`;
+              successModal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+            }
+
+            // Close success modal
+            window.closeSuccessModal = function() {
+              successModal.classList.add('hidden');
+              document.body.style.overflow = 'auto';
+              form.reset();
+            }
+
+            // Add input event listeners for real-time validation
+            form.querySelectorAll('input, select').forEach(input => {
+              input.addEventListener('input', () => validateInput(input));
+              input.addEventListener('blur', () => validateInput(input));
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              let isValid = true;
+              form.querySelectorAll('input, select').forEach(input => {
+                if (!validateInput(input)) {
+                  isValid = false;
+                }
+              });
+              
+              if (isValid) {
+                const studentName = document.getElementById('studentName').value.trim();
+                showSuccessModal(studentName);
+              }
+            });
+          });
+        </script>
 
         <!-- Countdown Timer -->
         <div class="mt-20 md:mt-0">
