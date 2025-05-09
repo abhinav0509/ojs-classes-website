@@ -8,6 +8,50 @@
     <link rel="stylesheet" href="/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(to right, #46397C, #6B5B95);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 0 0 8px 8px;
+        }
+        .info-row {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .label {
+            font-weight: 600;
+            color: #46397C;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
   </head>
   <body class="bg-gray-50">
     <!-- Celestial Navigation Bar -->
@@ -379,123 +423,176 @@
           }
         </style>
 
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('admissionForm');
-            const successModal = document.getElementById('successModal');
-            
-            // Validation messages
-            const validationMessages = {
-              studentName: {
-                required: 'Student name is required',
-                pattern: 'Please enter a valid name (only letters and spaces)',
-                minlength: 'Name must be at least 2 characters long'
-              },
-              parentName: {
-                required: 'Parent/Guardian name is required',
-                pattern: 'Please enter a valid name (only letters and spaces)',
-                minlength: 'Name must be at least 2 characters long'
-              },
-              phone: {
-                required: 'Phone number is required',
-                pattern: 'Please enter a valid 10-digit phone number'
-              },
-              email: {
-                required: 'Email address is required',
-                type: 'Please enter a valid email address'
-              },
-              class: {
-                required: 'Please select a class'
-              },
-              course: {
-                required: 'Please select a course'
-              }
-            };
-
-            // Show error message
-            function showError(input, message) {
-              const errorDiv = input.parentElement.querySelector('.error-message');
-              errorDiv.textContent = message;
-              errorDiv.classList.remove('hidden');
-              input.classList.add('border-red-500');
-            }
-
-            // Hide error message
-            function hideError(input) {
-              const errorDiv = input.parentElement.querySelector('.error-message');
-              errorDiv.classList.add('hidden');
-              input.classList.remove('border-red-500');
-            }
-
-            // Validate input
-            function validateInput(input) {
-              const value = input.value.trim();
-              const type = input.type;
-              const pattern = input.pattern;
-              const minLength = input.minLength;
-              
-              if (input.required && !value) {
-                showError(input, validationMessages[input.name].required);
-                return false;
-              }
-              
-              if (pattern && value && !new RegExp(pattern).test(value)) {
-                showError(input, validationMessages[input.name].pattern);
-                return false;
-              }
-              
-              if (minLength && value.length < minLength) {
-                showError(input, validationMessages[input.name].minlength);
-                return false;
-              }
-              
-              if (type === 'email' && value && !value.includes('@')) {
-                showError(input, validationMessages[input.name].type);
-                return false;
-              }
-              
-              hideError(input);
-              return true;
-            }
-
-            // Show success modal
-            function showSuccessModal(studentName) {
-              const successMessage = document.getElementById('successMessage');
-              successMessage.textContent = `Dear ${studentName}, your enquiry has been successfully submitted. Our team will reach out to you soon.`;
-              successModal.classList.remove('hidden');
-              document.body.style.overflow = 'hidden';
-            }
-
-            // Close success modal
-            window.closeSuccessModal = function() {
-              successModal.classList.add('hidden');
-              document.body.style.overflow = 'auto';
-              form.reset();
-            }
-
-            // Add input event listeners for real-time validation
-            form.querySelectorAll('input, select').forEach(input => {
-              input.addEventListener('input', () => validateInput(input));
-              input.addEventListener('blur', () => validateInput(input));
-            });
-
-            // Form submission
-            form.addEventListener('submit', function(e) {
-              e.preventDefault();
-              
-              let isValid = true;
-              form.querySelectorAll('input, select').forEach(input => {
-                if (!validateInput(input)) {
-                  isValid = false;
+            (function() {
+                try {
+                    // Initialize EmailJS with your public key
+                    emailjs.init("mrvdTUSn4tpBaJRac");
+                    console.log("EmailJS initialized successfully");
+                } catch (error) {
+                    console.error("Error initializing EmailJS:", error);
                 }
-              });
-              
-              if (isValid) {
-                const studentName = document.getElementById('studentName').value.trim();
-                showSuccessModal(studentName);
-              }
+            })();
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('admissionForm');
+                const successModal = document.getElementById('successModal');
+                
+                // Validation messages
+                const validationMessages = {
+                    studentName: {
+                        required: 'Student name is required',
+                        pattern: 'Please enter a valid name (only letters and spaces)',
+                        minlength: 'Name must be at least 2 characters long'
+                    },
+                    parentName: {
+                        required: 'Parent/Guardian name is required',
+                        pattern: 'Please enter a valid name (only letters and spaces)',
+                        minlength: 'Name must be at least 2 characters long'
+                    },
+                    phone: {
+                        required: 'Phone number is required',
+                        pattern: 'Please enter a valid 10-digit phone number'
+                    },
+                    email: {
+                        required: 'Email address is required',
+                        type: 'Please enter a valid email address'
+                    },
+                    class: {
+                        required: 'Please select a class'
+                    },
+                    course: {
+                        required: 'Please select a course'
+                    }
+                };
+
+                // Show error message
+                function showError(input, message) {
+                    const errorDiv = input.parentElement.querySelector('.error-message');
+                    errorDiv.textContent = message;
+                    errorDiv.classList.remove('hidden');
+                    input.classList.add('border-red-500');
+                }
+
+                // Hide error message
+                function hideError(input) {
+                    const errorDiv = input.parentElement.querySelector('.error-message');
+                    errorDiv.classList.add('hidden');
+                    input.classList.remove('border-red-500');
+                }
+
+                // Validate input
+                function validateInput(input) {
+                    const value = input.value.trim();
+                    const type = input.type;
+                    const pattern = input.pattern;
+                    const minLength = input.minLength;
+                    
+                    if (input.required && !value) {
+                        showError(input, validationMessages[input.name].required);
+                        return false;
+                    }
+                    
+                    if (pattern && value && !new RegExp(pattern).test(value)) {
+                        showError(input, validationMessages[input.name].pattern);
+                        return false;
+                    }
+                    
+                    if (minLength && value.length < minLength) {
+                        showError(input, validationMessages[input.name].minlength);
+                        return false;
+                    }
+                    
+                    if (type === 'email' && value && !value.includes('@')) {
+                        showError(input, validationMessages[input.name].type);
+                        return false;
+                    }
+                    
+                    hideError(input);
+                    return true;
+                }
+
+                // Show success modal
+                function showSuccessModal(studentName) {
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.textContent = `Dear ${studentName}, your enquiry has been successfully submitted. Our team will reach out to you soon.`;
+                    successModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                // Close success modal
+                window.closeSuccessModal = function() {
+                    successModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                    form.reset();
+                }
+
+                // Add input event listeners for real-time validation
+                form.querySelectorAll('input, select').forEach(input => {
+                    input.addEventListener('input', () => validateInput(input));
+                    input.addEventListener('blur', () => validateInput(input));
+                });
+
+                // Form submission
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    form.querySelectorAll('input, select').forEach(input => {
+                        if (!validateInput(input)) {
+                            isValid = false;
+                        }
+                    });
+                    
+                    if (isValid) {
+                        const submitButton = form.querySelector('button[type="submit"]');
+                        
+                        try {
+                            // Disable submit button and show loading state
+                            submitButton.disabled = true;
+                            submitButton.innerHTML = 'Sending...';
+
+                            // Prepare template parameters
+                            const templateParams = {
+                                studentName: form.studentName.value,
+                                parentName: form.parentName.value,
+                                phone: form.phone.value,
+                                email: form.email.value,
+                                class: form.class.value,
+                                course: form.course.value,
+                                to_email: 'ojsacademy@gmail.com'
+                            };
+
+                            console.log("Sending email with params:", templateParams);
+
+                            // Send email using EmailJS
+                            const response = await emailjs.send(
+                                'service_orv7e0r', // Your service ID
+                                'template_l0qgl4r', // Your template ID
+                                templateParams
+                            );
+
+                            console.log("EmailJS response:", response);
+
+                            if (response.status === 200) {
+                                const studentName = form.studentName.value.trim();
+                                showSuccessModal(studentName);
+                            } else {
+                                throw new Error('Failed to send email: ' + response.text);
+                            }
+                        } catch (error) {
+                            console.error('Error sending email:', error);
+                            alert('Sorry, there was an error sending your message. Please try again later or contact us directly at ojsacademy@gmail.com');
+                        } finally {
+                            // Re-enable submit button and restore original text
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = 'Submit Inquiry';
+                        }
+                    }
+                });
             });
-          });
         </script>
 
         <!-- Countdown Timer -->
@@ -1107,7 +1204,7 @@
         <!-- Location Lattice -->
         <div class="mb-16">
           <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Find Us Here</h3>
-          <div class="grid md:grid-cols-2 gap-8">
+          <div class="grid md:grid-cols-2 gap-8"> 
             <div class="map-container">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.3502343653927!2d77.15541837560991!3d28.529190775721325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1dbb63bfc2a7%3A0xb6810ca839810d46!2sOJS%20CLASSES!5e0!3m2!1sen!2sin!4v1744682217389!5m2!1sen!2sin" 
