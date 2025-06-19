@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-white">
     <!-- Celestial Navigation Bar -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
       <div class="container mx-auto px-4">
@@ -61,10 +61,7 @@
             <a href="#testimonials" class="nav-link">Success Stories</a>
             <a href="#contact" class="nav-link">Contact</a>
           </div>
-          <div class="hidden md:flex items-center space-x-4">
-            <button class="text-primary hover:text-secondary transition-colors duration-200">Login</button>
-            <button class="btn-primary">Book Demo</button>
-          </div>
+         
           <button id="mobileMenuBtn" class="md:hidden">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -89,87 +86,159 @@
       </div>
     </div>
 
-    <!-- About Hero Section -->
-    <section class="pt-32 pb-16 bg-gradient-to-b from-blue-50 to-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About OJS Classes</h1>
-          <p class="text-xl text-gray-600">The leading name in South Delhi's Vasant Kunj for academic excellence and competitive exam preparation</p>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Animated Background -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-blue-900/90 mix-blend-multiply"></div>
+        <img src="images/about-img/hero-bg.jpg" alt="Students studying in a modern classroom" class="w-full h-full object-cover transform scale-105 animate-subtle-zoom">
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float-delayed"></div>
+      </div>
+      
+      <!-- Content -->
+      <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <div class="inline-block mb-6">
+          <span class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+            Welcome to Excellence
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight animate-fade-in">
+          About OJS Classes
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 animate-fade-in-delayed">
+          The leading name in South Delhi's Vasant Kunj for academic excellence and competitive exam preparation
+        </p>
+       
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="flex flex-col items-center">
+          <span class="text-white text-sm mb-2">Scroll to explore</span>
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
         </div>
       </div>
     </section>
 
     <!-- About Content Section -->
-    <section class="py-16">
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-7xl mx-auto">
           <!-- Introduction -->
-          <div class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              "OJS CLASSES", The leading name in South Delhi's Vasant Kunj for the preparation of CBSE, JEE, NEET, KVPY, NTSE, OLYMPIAD & FOUNDATION Courses brings an amazing opportunity for students of Class VI to XII.
-            </p>
-            <p class="text-lg text-gray-600">
-              We are one of the best tutorial coaching classes in Vasant Kunj (South Delhi) for CBSE & (JEE) Joint Entrance Examination (Engineering), Medical (NEET) National Eligibility cum Entrance Test (Medical) coaching.
-            </p>
+          <div class="mb-32">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+              <div class="space-y-8">
+                <div>
+                  <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    Our Journey
+                  </span>
+                  <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Story</h2>
+                  <div class="w-20 h-1 bg-primary rounded-full"></div>
+                </div>
+                <div class="space-y-6 text-lg text-gray-600">
+                  <p class="leading-relaxed">
+                    "OJS CLASSES", The leading name in South Delhi's Vasant Kunj for the preparation of CBSE, JEE, NEET, KVPY, NTSE, OLYMPIAD & FOUNDATION Courses brings an amazing opportunity for students of Class VI to XII.
+                  </p>
+                  <p class="leading-relaxed">
+                    We are one of the best tutorial coaching classes in Vasant Kunj (South Delhi) for CBSE & (JEE) Joint Entrance Examination (Engineering), Medical (NEET) National Eligibility cum Entrance Test (Medical) coaching.
+                  </p>
+                </div>
+              </div>
+              <div class="relative group">
+                <div class="absolute -inset-4 bg-primary/20 rounded-2xl transform rotate-3 transition-transform group-hover:rotate-6"></div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform group-hover:scale-[1.02]">
+                  <img src="images/about-img/classroom.jpg" alt="Modern classroom with students engaged in learning" class="w-full h-full object-cover">
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Programs Offered -->
-          <div class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Programs</h2>
+          <!-- Programs -->
+          <div class="mb-32" id="programs">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                What We Offer
+              </span>
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Programs</h2>
+              <div class="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+            </div>
             <div class="grid md:grid-cols-2 gap-8">
-              <div class="program-card">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Science Stream</h3>
-                <ul class="space-y-2 text-gray-600">
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <!-- Science Stream -->
+              <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-center mb-8">
+                  <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-semibold text-gray-900">Science Stream</h3>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     JEE (Joint Entrance Examination)
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     NEET (National Eligibility cum Entrance Test)
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     KVPY (Kishore Vaigyanik Protsahan Yojana)
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     NTSE & Olympiads
                   </li>
                 </ul>
               </div>
-              <div class="program-card">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Commerce Stream</h3>
-                <ul class="space-y-2 text-gray-600">
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+
+              <!-- Commerce Stream -->
+              <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-center mb-8">
+                  <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-semibold text-gray-900">Commerce Stream</h3>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     Accounts
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     Economics
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     Business Studies
                   </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <li class="flex items-center text-gray-600 hover:text-primary transition-colors group/item">
+                    <svg class="w-5 h-5 text-primary mr-3 transform group-hover/item:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                     CUET (Common University Entrance Test)
@@ -180,52 +249,107 @@
           </div>
 
           <!-- Our Approach -->
-          <div class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Approach</h2>
+          <div class="mb-32">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                How We Work
+              </span>
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Approach</h2>
+              <div class="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+            </div>
             <div class="grid md:grid-cols-2 gap-8">
-              <div class="approach-card">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Student-Centric Learning</h3>
-                <p class="text-gray-600">
-                  We focus on building a strong foundation of knowledge and concepts in students for their success and provide an excellent platform for the preparation of competitive exams and board level education.
-                </p>
+              <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div class="relative">
+                  <img src="images/about-img/classroom.jpg" alt="Students engaged in learning activities" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div class="p-8">
+                  <h3 class="text-2xl font-semibold text-gray-900 mb-4">Student-Centric Learning</h3>
+                  <p class="text-gray-600">
+                    We focus on building a strong foundation of knowledge and concepts in students for their success and provide an excellent platform for the preparation of competitive exams and board level education.
+                  </p>
+                </div>
               </div>
-              <div class="approach-card">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Personalized Attention</h3>
-                <p class="text-gray-600">
-                  The best academic support and personal care which we provide to the students helps them meet their career goals and objectives.
-                </p>
+              <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div class="relative">
+                  <img src="images/about-img/personal-attention.jpg" alt="Teacher providing individual attention to student" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div class="p-8">
+                  <h3 class="text-2xl font-semibold text-gray-900 mb-4">Personalized Attention</h3>
+                  <p class="text-gray-600">
+                    The best academic support and personal care which we provide to the students helps them meet their career goals and objectives.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Core Values -->
-          <div class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Core Values</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-              <div class="value-card">
-                <h4 class="text-lg font-semibold text-gray-900 mb-2">Determination</h4>
+          <div class="mb-32">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                Our Principles
+              </span>
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+              <div class="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-3">Determination</h4>
                 <p class="text-gray-600">Commitment to excellence in education</p>
               </div>
-              <div class="value-card">
-                <h4 class="text-lg font-semibold text-gray-900 mb-2">Integrity</h4>
+              <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-3">Integrity</h4>
                 <p class="text-gray-600">Upholding ethical standards in education</p>
               </div>
-              <div class="value-card">
-                <h4 class="text-lg font-semibold text-gray-900 mb-2">Holistic Learning</h4>
+              <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-3">Holistic Learning</h4>
                 <p class="text-gray-600">Focus on overall student development</p>
               </div>
             </div>
           </div>
 
-          <!-- Faculty -->
-          <div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Faculty</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Our highly qualified and most experienced Teachers are dedicated and committed to student's complete success and provide assistive surroundings to contribute to their social, cultural, academic and all-round development.
-            </p>
-            <p class="text-lg text-gray-600">
-              To our students, we impart value-based career education, abundant resources, and individual attention. To the parents, we have a responsibility to nurture ethical and responsible career leadership in the children. To the society, we provide a lifelong connection to ethics and excellence in global leaders.
-            </p>
+          <!-- Faculty Section -->
+          <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <div class="text-center mb-12">
+              <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                Meet Our Team
+              </span>
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Faculty</h2>
+              <div class="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="space-y-6 text-lg text-gray-600">
+                <p class="leading-relaxed">
+                  Our highly qualified and most experienced Teachers are dedicated and committed to student's complete success and provide assistive surroundings to contribute to their social, cultural, academic and all-round development.
+                </p>
+                <p class="leading-relaxed">
+                  To our students, we impart value-based career education, abundant resources, and individual attention. To the parents, we have a responsibility to nurture ethical and responsible career leadership in the children. To the society, we provide a lifelong connection to ethics and excellence in global leaders.
+                </p>
+              </div>
+              <div class="relative group">
+                <div class="absolute -inset-4 bg-primary/20 rounded-2xl transform -rotate-3 transition-transform group-hover:rotate-0"></div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform group-hover:scale-[1.02]">
+                  <img src="images/about-img/santosh-sir.JPG" alt="OJS Classes faculty member - Santosh Sir" class="w-full h-full object-cover">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
