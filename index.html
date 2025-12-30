@@ -428,7 +428,7 @@
             (function() {
                 try {
                     // Initialize EmailJS with your public key
-                    emailjs.init("mrvdTUSn4tpBaJRac");
+                    emailjs.init("HUZfiCDhHBjXM1un8");
                     console.log("EmailJS initialized successfully");
                 } catch (error) {
                     console.error("Error initializing EmailJS:", error);
@@ -554,23 +554,40 @@
                             submitButton.disabled = true;
                             submitButton.innerHTML = 'Sending...';
 
-                            // Prepare template parameters
+                            // Prepare template parameters with formatted data
+                            const courseNames = {
+                                'jee': 'JEE',
+                                'neet': 'NEET',
+                                'kvpy': 'KVPY',
+                                'ntse': 'NTSE',
+                                'olympiad': 'Olympiads',
+                                'school': 'School Curriculum'
+                            };
+                            
                             const templateParams = {
-                                studentName: form.studentName.value,
-                                parentName: form.parentName.value,
-                                phone: form.phone.value,
-                                email: form.email.value,
-                                class: form.class.value,
-                                course: form.course.value,
-                                to_email: 'ojsacademy@gmail.com'
+                                studentName: form.studentName.value.trim(),
+                                parentName: form.parentName.value.trim(),
+                                phone: form.phone.value.trim(),
+                                email: form.email.value.trim(),
+                                class: `Class ${form.class.value}`,
+                                course: courseNames[form.course.value] || form.course.value,
+                                courseRaw: form.course.value,
+                                classRaw: form.class.value,
+                                to_email: 'ojsacademy@gmail.com',
+                                submissionDate: new Date().toLocaleString('en-IN', { 
+                                    timeZone: 'Asia/Kolkata',
+                                    dateStyle: 'full',
+                                    timeStyle: 'short'
+                                }),
+                                message: `New Admission Inquiry Received\n\nStudent Name: ${form.studentName.value.trim()}\nParent/Guardian Name: ${form.parentName.value.trim()}\nPhone: ${form.phone.value.trim()}\nEmail: ${form.email.value.trim()}\nCurrent Class: Class ${form.class.value}\nCourse Interested In: ${courseNames[form.course.value] || form.course.value}\n\nSubmitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`
                             };
 
                             console.log("Sending email with params:", templateParams);
 
                             // Send email using EmailJS
                             const response = await emailjs.send(
-                                'service_orv7e0r', // Your service ID
-                                'template_l0qgl4r', // Your template ID
+                                'service_1vvtba3', // Your service ID
+                                'template_0dy4j5t', // Your template ID
                                 templateParams
                             );
 

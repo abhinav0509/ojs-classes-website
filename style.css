@@ -2,6 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+/* THEME VARIABLES */
+:root {
+  --color-primary: #46397C;
+  --color-primary-dark: #2d2352;
+  --color-secondary: #6B5B95;
+  --color-accent: #F7C873;
+  --color-bg: #F6F7FB;
+  --color-bg-alt: #F0F1F6;
+  --color-surface: #fff;
+  --color-surface-dark: #f3f4f8;
+  --color-text: #23223A;
+  --color-text-light: #6B6B8A;
+  --color-border: #E2E8F0;
+  --color-success: #4CAF50;
+  --color-error: #E74C3C;
+}
+
+body, html {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-primary-dark { background-color: var(--color-primary-dark) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
+.bg-surface { background-color: var(--color-surface) !important; }
+.bg-surface-dark { background-color: var(--color-surface-dark) !important; }
+
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-secondary) !important; }
+.text-accent { color: var(--color-accent) !important; }
+.text-success { color: var(--color-success) !important; }
+.text-error { color: var(--color-error) !important; }
+.text-light { color: var(--color-text-light) !important; }
+
+.border-primary { border-color: var(--color-primary) !important; }
+.border-secondary { border-color: var(--color-secondary) !important; }
+.border-accent { border-color: var(--color-accent) !important; }
+.border-surface { border-color: var(--color-surface) !important; }
+.border-success { border-color: var(--color-success) !important; }
+.border-error { border-color: var(--color-error) !important; }
+
+/* Override Tailwind's gray backgrounds for a softer look */
+.bg-gray-50, .bg-gray-100, .bg-gray-200, .bg-gray-300, .bg-gray-400, .bg-gray-500, .bg-gray-600, .bg-gray-700, .bg-gray-800, .bg-gray-900 {
+  background-color: var(--color-bg-alt) !important;
+}
+
+/* Card and surface backgrounds */
+.card, .program-card, .testimonial-card, .methodology-card, .subject-card, .faq-item, .metric-card, .faculty-card, .location-info, .stat-card, .step-card, .value-card, .approach-card, .parent-testimonial, .form-group, .form-input, .search-container, .map-container, .parent-tab, .parent-tab.active {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px 0 rgba(70,57,124,0.04);
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(70,57,124,0.08);
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-secondary));
+  color: #fff;
+}
+
+/* Section backgrounds */
+section, .section-bg {
+  background: var(--color-bg);
+}
+
+/* Inputs */
+.form-input {
+  background: var(--color-surface-dark);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary)22;
+}
+
+/* Error and success */
+.error-message {
+  color: var(--color-error) !important;
+}
+.text-success {
+  color: var(--color-success) !important;
+}
+
+/* Accent elements */
+.section-title, .step-number, .step-icon, .route-icon, .question-icon {
+  color: var(--color-primary) !important;
+}
+
+/* Reduce overall brightness for a softer look */
+.hero-pattern, .hero-slider, .bg-white, .bg-surface, .bg-surface-dark {
+  filter: brightness(0.98) contrast(1.02);
+}
+
+/* Remove harsh white backgrounds */
+.bg-white, .bg-surface {
+  background: var(--color-surface) !important;
+}
+
+/* Update scrollbar for theme */
+.custom-scrollbar {
+  scrollbar-color: var(--color-primary) var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+/* Update shadows for a softer, modern look */
+.card, .program-card, .testimonial-card, .methodology-card, .subject-card, .faq-item, .metric-card, .faculty-card, .location-info, .stat-card, .step-card, .value-card, .approach-card, .parent-testimonial {
+  box-shadow: 0 2px 12px 0 rgba(70,57,124,0.04);
+}
+
+/* Remove any inline or hardcoded background colors in index.html and use these classes instead. */
+
 .hero-pattern {
   background-color: #ffffff;
   background-image: radial-gradient(#1E40AF 0.5px, #ffffff 0.5px);
@@ -10,10 +136,6 @@
 
 .nav-link {
   @apply hover:text-primary transition-colors duration-200;
-}
-
-.btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition-all duration-200 font-semibold;
 }
 
 .section-title {
@@ -773,10 +895,6 @@
 /* Connection Crucible Styles */
 .form-group {
   @apply relative;
-}
-
-.form-input {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200;
 }
 
 .field-suggestions {
